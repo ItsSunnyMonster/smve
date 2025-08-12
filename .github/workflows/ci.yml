@@ -22,7 +22,7 @@ jobs:
     if: needs.skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Install NodeJS
@@ -68,7 +68,7 @@ jobs:
     if: needs.clippy_skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
           path: |
@@ -103,7 +103,7 @@ jobs:
     if: needs.docs_skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
           path: |
@@ -141,7 +141,7 @@ jobs:
     if: needs.test_skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
           path: |
@@ -186,7 +186,7 @@ jobs:
   #    - name: Install LLD on Ubuntu
   #      if: matrix.os == 'ubuntu'
   #      run: sudo apt-get install lld
-  #    - uses: actions/checkout@v4
+  #    - uses: actions/checkout@v5
   #    - name: Cargo build
   #      run: cargo build --verbose ${{ matrix.configuration == 'release' && '--release' || '' }}
   #    - name: Upload binary
@@ -217,7 +217,7 @@ jobs:
     if: needs.format_skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
           path: |
@@ -264,7 +264,7 @@ jobs:
     if: needs.toml_skip_check.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install taplo
         run: |
           curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-linux-x86_64.gz \
@@ -283,7 +283,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Download cloc
         run: |
           sudo apt-get update -y && sudo apt-get install -y cloc
@@ -308,7 +308,7 @@ jobs:
     needs: commitlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check for typos
         uses: crate-ci/typos@v1.32.0
       - name: Typos info
@@ -344,7 +344,7 @@ jobs:
 #
 #    steps:
 #      - name: Checkout code
-#        uses: actions/checkout@v4
+#        uses: actions/checkout@v5
 #        with:
 #          # super-linter needs the full git history to get the
 #          # list of files that changed across commits
